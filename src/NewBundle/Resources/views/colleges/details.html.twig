@@ -1,0 +1,32 @@
+<h1>{{ data.college.title }}</h1>
+<div>{{ data.college.description }}</div>
+<h2>statistic:</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>avg mark of college</th>
+        <td>{{ data.avg }}</td>
+    </tr>
+    <tr>
+        <th>branch count</th>
+        <td>{{ data.college.branches.count }}</td>
+    </tr>
+    <tr>
+        <th>student count</th>
+        <td>{{ data.studentsCount }}</td>
+    </tr>
+</table>
+<br>
+<br>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Branches</th>
+        <th>Rectors</th>
+    </tr>
+    {% for branch in data.college.branches %}
+        <tr>
+            <td><a href="{{ path('branch_details', {id: branch.id}) }}">{{ branch.title }}</a></td>
+            <td>{{ branch.branchHead.firstName }} {{  branch.branchHead.lastName }}</td>
+        </tr>
+    {% endfor %}
+</table><br>
+<a href="{{ path('college_list') }}">List Colleges</a>

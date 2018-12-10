@@ -1,0 +1,11 @@
+<h1>Group: {{ party.title }}</h1>
+<table border="1" cellpadding="5">
+    {% for student in party.students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="{{ path('branch_details', {id: party.branch.id}) }}">Back</a>

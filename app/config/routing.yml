@@ -1,0 +1,4 @@
+new:
+    resource: "@NewBundle/Controller/"
+    type:     annotation
+    prefix:   /

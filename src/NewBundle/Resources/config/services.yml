@@ -1,0 +1,29 @@
+services:
+#    new.student:
+#        class: NewBundle\Repository\StudentRepository
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
+    new.repository.college_repository:
+        class: NewBundle\Repository\CollegeRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - NewBundle\Entity\College
+
+    new.repository.branch_repository:
+        class: NewBundle\Repository\BranchRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - NewBundle\Entity\Branch
+
+    new.service.college_service:
+        class: NewBundle\Service\CollegeService
+        arguments:
+            - "@new.repository.college_repository"
+        public: true
+
+    new.service.branch_service:
+        class: NewBundle\Service\BranchService
+        arguments:
+            - "@new.repository.branch_repository"
+        public: true
