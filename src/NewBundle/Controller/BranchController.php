@@ -2,6 +2,7 @@
 namespace NewBundle\Controller;
 
 use NewBundle\Entity\Branch;
+use NewBundle\Service\BranchService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,9 +17,9 @@ class BranchController extends Controller
      */
     public function detailsAction(Branch $branch)
     {
-        $avg = $this->get('new.service.branch_service')->getAvgStudents($branch);
-        $studentCount = $this->get('new.service.branch_service')->getStudentCount($branch);
-        $topStudents = $this->get('new.service.student_service')->getTopStudents($branch);
+        $avg = $this->getService()->getAvgStudents($branch);
+        $studentCount = $this->getService()->getStudentCount($branch);
+        $topStudents = $this->getService()->getTopStudents($branch);
 
         return $this->render('@New/branches/details.html.twig', [
             'branch' => $branch,
@@ -26,5 +27,13 @@ class BranchController extends Controller
             'studentCount' => $studentCount,
             'tops' => $topStudents
         ]);
+    }
+
+    /**
+     * @return BranchService|object
+     */
+    public function getService()
+    {
+        return $this->get('new.service.branch_service');
     }
 }
