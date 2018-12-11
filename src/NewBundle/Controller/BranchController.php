@@ -18,7 +18,7 @@ class BranchController extends Controller
     {
         $avg = $this->get('new.service.branch_service')->getAvgStudents($branch);
         $studentCount = $this->get('new.service.branch_service')->getStudentCount($branch);
-        $topStudents = $this->get('new.service.branch_service')->getTopStudent($branch);
+        $topStudents = $this->get('new.service.student_service')->getTopStudents($branch);
 
         return $this->render('@New/branches/details.html.twig', [
             'branch' => $branch,

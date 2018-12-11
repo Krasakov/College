@@ -36,6 +36,21 @@ class College
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+
+    private $lastName;
+
+    /**
      * @var Collection|Branch[]
      *
      * @ORM\OneToMany(targetEntity="NewBundle\Entity\Branch", mappedBy="college")
@@ -85,6 +100,38 @@ class College
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
     }
 
     /**

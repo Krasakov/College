@@ -1,13 +1,15 @@
 <h1>Colleges list ...</h1>
 <table border="1" cellpadding="5">
     <tr>
-        <th>id</th>
-        <th>title</th>
+        <th>Number</th>
+        <th>Colleges</th>
+        <th>Directors</th>
     </tr>
     {% for college in colleges %}
         <tr>
             <td>{{ college.id }}</td>
             <td><a href="{{ path('college_details', {id: college.id}) }}">{{ college.title }}</a></td>
+            <td>{{ college.firstName }} {{ college.lastName }}</td>
         </tr>
     {% endfor %}
 </table>

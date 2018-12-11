@@ -53,6 +53,8 @@ class TestCommand extends ContainerAwareCommand
             $college = new College();
             $college->setTitle($faker->company);
             $college->setDescription($faker->text(200));
+            $college->setFirstName($faker->firstName);
+            $college->setLastName($faker->lastName);
             $em->persist($college);
 
             for ($b = 0; $b < 3; $b++) {

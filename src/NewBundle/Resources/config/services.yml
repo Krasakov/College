@@ -16,6 +16,12 @@ services:
         arguments:
             - NewBundle\Entity\Branch
 
+    new.repository.student_repository:
+            class: NewBundle\Repository\StudentRepository
+            factory: ['@doctrine.orm.entity_manager', getRepository]
+            arguments:
+                - NewBundle\Entity\Student
+
     new.service.college_service:
         class: NewBundle\Service\CollegeService
         arguments:
@@ -26,4 +32,10 @@ services:
         class: NewBundle\Service\BranchService
         arguments:
             - "@new.repository.branch_repository"
+        public: true
+
+    new.service.student_service:
+        class: NewBundle\Service\StudentService
+        arguments:
+            - "@new.repository.student_repository"
         public: true
