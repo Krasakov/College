@@ -19,13 +19,13 @@
 <br>
 <table border="1" cellpadding="5">
     <tr>
-        <th>Branches</th>
         <th>Rectors</th>
+        <th>Branches</th>
     </tr>
     {% for branch in data.college.branches %}
         <tr>
-            <td><a href="{{ path('branch_details', {id: branch.id}) }}">{{ branch.title }}</a></td>
             <td>{{ branch.branchHead.firstName }} {{  branch.branchHead.lastName }}</td>
+            <td><a href="{{ path('branch_details', {id: branch.id}) }}">{{ branch.title }}</a></td>
         </tr>
     {% endfor %}
 </table><br>
